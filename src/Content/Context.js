@@ -12,7 +12,7 @@ faker.seed(33)
 
 const Context = ({ children }) => {
     // console.log(children)
-    const products = [...Array(10)].map(() => ({
+    const products = [...Array(20)].map(() => ({
         id: faker.string.uuid(),
         name: faker.commerce.productName(),
         price: faker.commerce.price(),
