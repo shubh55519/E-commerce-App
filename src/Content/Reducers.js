@@ -1,21 +1,18 @@
+
 export const cartReducer = (state, action) => {
-    // console.log({ ...action.payload })
-    // console.log(state)
+    // console.log(state, 'line3');
     switch (action.type) {
-        case "ADD_TO_CART":
-            // console.log([...state]);
-            // return [...state];
-            // console.log({ ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] });
+        case 'ADD_TO_CART':
+            console.log({ ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] });
             return { ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] };
-        case "REMOVE_FROM_CART":
-            // console.log({ ...state, cart: state.cart.filter(c => c.id !== action.payload.id), });
-            return { ...state, cart: state.cart.filter(c => c.id !== action.payload.id), };
-        case "CHANGE_CART_QTY":
+        case 'REMOVE_FROM_CART':
+            console.log({ ...state, cart: state.cart.filter((c) => c.id !== action.payload.id) });
+            return { ...state, cart: state.cart.filter((c) => c.id !== action.payload.id) }
+        case 'CHANGE_CART_QTY':
+            console.log({ ...state, cart: state.cart }, 'line 29');
             return {
-                ...state, cart: state.cart.filter(c => c.id === action.payload.id ?
-                    c.qty = action.payload.qty
-                    :
-                    c.qty)
+                ...state, cart: state.cart.filter((c) =>
+                    c.id === action.payload.id ? (c.qty = action.payload.qty) : (c.qty))
             }
         default:
             return state;
@@ -27,13 +24,13 @@ export const productReducer = (state, action) => {
         case 'SORT_BY_PRICE':
             return { ...state, sort: action.payload };
         case 'FILTER_BY_STOCK':
-            return { ...state, byStock: !state.byStock };
+            return { ...state, byStock: !state.byStock }
         case 'FILTER_BY_DELIVERY':
-            return { ...state, byFastDelivery: !state.byFastDelivery };
+            return { ...state, byFastDelivery: !state.byFastDelivery }
         case 'FILTER_BY_RATING':
-            return { ...state, byRating: action.payload };
+            return { ...state, byRating: action.payload }
         case 'FILTER_BY_SEARCH':
-            return { ...state, searchQuery: action.payload };
+            return { ...state, searchQuery: action.payload }
         case 'CLEAR_FILTERS':
             return {
                 byStock: false,
@@ -43,6 +40,6 @@ export const productReducer = (state, action) => {
             };
 
         default:
-            break;
+            return state;
     }
 }

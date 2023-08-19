@@ -1,19 +1,17 @@
-import React from 'react'
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 
 
-const Rating = ({ onClick, ratings, style }) => {
-
-    console.log(ratings);
+const Rating = ({ rating, onClick, style, prod }) => {
+    // console.log(prod, 'Line 5');
     return (
         <div>
-            {[...Array(5)].map((i) => (
-                <span key={i} onClick={() => onClick(i)} style={style}>
-                    {ratings > i ? (
-                        <AiFillStar fontSize='15px' />
-                    ) : (
-                        <AiOutlineStar fontSize='15px' />
-                    )}
+            {[...Array(5)].map((_, i) => (
+                <span onClick={() => onClick(i)} key={i} style={style}>
+                    {
+                        rating > i ? (<AiFillStar fontSize='15px' />
+                        ) : (
+                            <AiOutlineStar fontSize='15px' />)
+                    }
                 </span>
             ))}
         </div >
