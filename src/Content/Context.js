@@ -7,8 +7,13 @@ const Data = createContext();
 faker.seed(99)
 
 const Context = ({ children }) => {
+<<<<<<< HEAD
     const product = [...Array(50)].map(() => ({
 
+=======
+    // console.log(children)
+    const products = [...Array(20)].map(() => ({
+>>>>>>> 72a40b3c61acb381a4088a2c9f5a9136003e08db
         id: faker.string.uuid(),
         name: faker.commerce.productName(),
         price: faker.commerce.price(),
